@@ -1,0 +1,110 @@
+@CreationTimestamp - Insert쿼리가 발생할 때 시간 값을 적용시켜준다.
+@UpdateTimestamp  - Update쿼리가 발생할 때 시간 값을 적용시켜준다.
+
+LocalDateTime.now() : 현재 시간을 저장
+
+-------------------------------------------------------------------------------------------------
+스프링부트 프로젝트 만들고 import 하기
+start.spring.io
+- java, gradle
+- Group : com.korea
+- Artifact : product
+
+필요 의존성
+- Spring Web
+- H2
+- lombok
+- Spring Data JPA
+
+
+1. ProductEntity클래스 만들기
+- 테이블명 product
+속성
+- 상품id (primary key)
+- 상품이름
+- 상품재고
+- 상품가격
+- 등록날짜
+- 수정날짜
+
+2. ProductDTO클래스 만들기
+속성
+- 상품번호
+- 상품이름
+- 상품재고
+- 상품가격
+- 등록날짜
+- 수정날짜
+기능
+Entity -> DTO 변환기능
+DTO -> Entity 변환기능
+
+3. ResponseDTO
+- 클라이언트와 데이터를 직접적으로 주고받기 위한 DTO클래스
+- 제네릭 타입을 가지고 있다.
+속성
+- String error
+- 리스트 data
+
+4. ProductRepository 인터페이스 만들기
+- JpaRepository 상속받기
+
+5. 서비스 계층 만들기
+ProductService 클래스 생성하기
+- ProductRepository 주입하기
+
+6. 표현계층 만들기
+ProductController 클래스 생성하기
+- ProductService 주입하기
+
+-------------------조회 추가 삭제 등 기능-------------------
+
+7. 조회하기 기능 만들기
+- 데이터베이스에 들어있는 모든 상품을 조회하는 API 만들기
+- 결과는 ResponseDTO에 담아서 보내기
+- ProductService : findAll()
+- ProductController
+- HTTPMETHOD : GET
+- 메서드명 : ResponseEntity<?> productList()
+
+8. 추가하기
+- 클라이언트로부터 데이터를 넘겨 받아서 DB에 데이터 추가하기
+- 모든데이터를 반환하기
+ProductService
+- 메서드명 : create()
+ProductController
+- HTTP메서드 : POST
+- 메서드명 : createProduct()
+
+-WebMvcConfig 클래스만들기
+------------------------------------------------------------
+상품정보를 볼 수 있는 화면 만들기
+- product-react-app 이름으로 리액트 프로젝트 만들기
+- src에 p_info.js 만들기
+- axios로 백엔드 데이터를 요청하고 받아와서 화면에 출력하기
+- ApiService파일의 call메서드를 사용해도 좋습니다.
+
+- src에 AddProduct.js만들기
+- 상품추가 버튼을 누르면
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
