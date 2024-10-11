@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import P_info from './p_info';
+import P_info from './product/p_info';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
