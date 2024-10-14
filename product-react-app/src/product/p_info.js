@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { call } from "../Service/ApiService";
 import '../css/style.css'
 import AddProduct from "./AddProduct";
+import OrderInfo from "./Order_info";
 
 function P_info(){
     //상품정보를 가지고있는 state
@@ -13,6 +14,8 @@ function P_info(){
     const[selectedIndex,setSelectedIndex] = useState(null);
     //주문개수를 저장하는 state
     const[orderCount,setOrderCount] = useState('');
+    //주문 내역을 렌더링할지 여부를 제어하는 state
+    const[showOrderInfo,setShowOrderInfo] = useState(false);
 
     //조회하기
     useEffect(() => {
@@ -49,6 +52,11 @@ function P_info(){
         }
     }
 
+    //주문내역 창을 여는 함수
+    const showOrderDetails = () => {
+        setShowOrderInfo(!showOrderInfo);
+    }
+
     let productItem = items.length > 0 &&(  
         <div>
             <table border="1">
@@ -78,8 +86,8 @@ function P_info(){
                 ))}
                 {/* DB에서 넘어온 상품들을 출력 */}
             </table>
-            <button onClick={orderProduct}>주문완료</button>
-            <button>주문내역</button>
+            <button type="button" onClick={orderProduct}>주문완료</button>
+            <button type="button" onClick={showOrderDetails} >주문내역</button>
         </div>
     );
 
@@ -99,6 +107,7 @@ function P_info(){
         <div className="container">
             {addProduct}
             {productItem}
+            {showOrderInfo && <OrderInfo/>}
         </div>
     )
 }

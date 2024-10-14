@@ -43,6 +43,7 @@ public class OrderService {
 		ProductEntity productEntity;
 		
 		//상품이 조회가 되면
+		//option.isPresent() : 있으면 true 없으면 false
 		if(option.isPresent()) {
 			//엔티티를 저장
 			productEntity = option.get();
@@ -66,6 +67,8 @@ public class OrderService {
 		//DB에 수정된 재고 업데이트
 		productRepository.save(productEntity);
 				
+		//반환하는 내용
+		//감소된 재고를 반영한 전체 내용
 		return 	productService.findAll();
 	}
 	

@@ -1,6 +1,10 @@
 import axios from 'axios'
 import { API_BASE_URL } from './api-config'
 
+//api : 호출할 api의 경로
+
+//요청목적지, http메서드, 요청데이터(없으면 null)을 받아서
+//axios에 전달해서 백엔드에 요청을 한다.
 export async function call(api,method,request){
 
     let headers = new Headers({
